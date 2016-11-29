@@ -1,0 +1,1 @@
+This is a very starter project for me to learn Vue.js 2.0.
