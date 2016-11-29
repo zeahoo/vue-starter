@@ -1,0 +1,48 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Class and Style Bindings</title>
+</head>
+<body>
+<!--Object Syntax-->
+<!--it will render   <div class="active"></div> if isActive: true -->
+  <div v-bind:class="{active: isActive}"></div>
+<!--the following is allowed-->
+  <div class="static"
+       v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+  <div id="app" v-bind:class="classObject"></div>
+
+  <!--Array Syntax-->
+  <div v-bind:class="[activeClass, errorClass]"></div>
+    <!--
+    When data is following
+    data: {
+    activeClass: 'active',
+    errorClass: 'text-danger'
+    }
+    it will render as <div class="active text-danger"></div>
+    -->
+
+  <!--It can use the object syntax inside array syntax-->
+  <div v-bind:class="[{active: isActive}, errorClass]"></div>
+
+
+
+  <!--With Components-->
+  <my-component class="baz boo"></my-component>
+  <!--
+  When you use the class attribute on a custom component,
+  those classes will be added to the component’s root element.
+  Existing classes on this element will not be overwritten.
+  -->
+
+  <!-- Binding Inline Styles -->
+  <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+  <!-- also can bind like following-->
+  <div v-bind:style="styleObject"></div>
+</body>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script >
+
+  </script>
+</html>
