@@ -4,61 +4,84 @@
   <title>Template Syntax</title>
 </head>
 <body>
+<div id="main">
 
-<!--Text-->
-<span>Message: {{message}}</span>
-<br>
-<span v-once>This will never change: {{msg}}</span>
 
-<!--Raw HTML-->
-<div v-html="rawHtml"></div>
+  <!--Text-->
+  <span>Message: {{message}}</span>
+  <br>
+  <span v-once>This will never change: {{msg}}</span>
 
-<!--Attributes-->
-<div v-bind:id="dynamicId"></div>
-<div v-bind:disabled="someDynamicCondition"></div> <!--Boolean attribute-->
+  <!--Raw HTML-->
+  <div v-html="rawHtml">{{ message }}</div>
 
-<!--Using JavaScript Expressions-->
-{{number + 1}}
-{{ok ? 'YES' : 'NO'}}
-{{message.split('').reverse().join('')}}
+  <!--Attributes-->
+  <div v-bind:id="dynamicId"></div>
+  <div v-bind:disabled="someDynamicCondition"></div> <!--Boolean attribute-->
 
-<div v-bind:id="'list-' + id"></div>
+  <!--Using JavaScript Expressions-->
+  {{number + 1}} <br>
+  {{ok ? 'YES' : 'NO'}} <br>
+  {{message.split('').reverse().join('')}} <br>
 
-<!--Directives-->
-<p v-if="seen">Now you see me</p>
+  <div v-bind:id="'list-' + id"></div>
 
-<!--Arguments-->
-<a v-bind:href="url"></a>
+  <!--Directives-->
+  <p v-if="seen">Now you see me</p>
 
-<a v-on:click="doSomething"></a>
+  <!--Arguments-->
+  <a v-bind:href="url">Weibo</a> <br>
 
-<!--Modifiers-->
-<form v-on:submit.prevent="onSubmit"></form>
-<!-- Call event.preventDefault()-->
+  <!--Modifiers-->
+  <!--<form v-on:submit.prevent="onSubmit"></form>-->
+  <!-- Call event.preventDefault()-->
 
-<!--Filters-->
+  <!--Filters-->
 
-{{ message | capitalize }}
+  {{ message | capitalize }}
 
-<div v-bind:id="rawId | formatId"></div>
+  <div v-bind:id="rawId | formatId"></div>
 
-<!--Shorthands-->
+  <!--Shorthands-->
 
-<!-- full syntax -->
+  <!-- full syntax -->
 
-<!-- v-bind shorthand -->
-<a v-bind:href="url"></a>
-<!-- shorthand -->
-<a :href="url"></a>
+  <!-- v-bind shorthand -->
+  <!--<a v-bind:href="url"></a>-->
+  <!-- shorthand -->
+  <!--<a :href="url"></a>-->
 
-<!-- v-on shorthand -->
-<a v-on:click="doSomething"></a>
-<a @click="doSomething"></a>
-
+  <!-- v-on shorthand -->
+  <!--<a v-on:click="doSomething"></a>-->
+  <!--<a @click="doSomething"></a>-->
+</div>
 </body>
 
 
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script >
-</script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script >
+    new Vue({
+      el: '#main',
+      data: {
+        message: 'Hello',
+        msg: 'Message Once',
+        rawHtml: 'This is the rawHTML{{sss}}',
+        dynamicId: 'id123',
+        someDynamicCondition: true,
+        number: 42,
+        ok: false,
+        id: 23,
+        seen: true,
+        url: 'http://www.weibo.com',
+        methods: {
+          doSomething: function (){
+            console.log('Hello world');
+          }
+        },
+        capitalize: true,
+        rawId: 'raw-123',
+        formatId: 'RAW-123'
+      }
+    })
+  </script>
 </html>
