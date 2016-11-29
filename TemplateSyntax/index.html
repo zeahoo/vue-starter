@@ -1,0 +1,64 @@
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+
+  <title>Template Syntax</title>
+</head>
+<body>
+
+<!--Text-->
+<span>Message: {{message}}</span>
+<br>
+<span v-once>This will never change: {{msg}}</span>
+
+<!--Raw HTML-->
+<div v-html="rawHtml"></div>
+
+<!--Attributes-->
+<div v-bind:id="dynamicId"></div>
+<div v-bind:disabled="someDynamicCondition"></div> <!--Boolean attribute-->
+
+<!--Using JavaScript Expressions-->
+{{number + 1}}
+{{ok ? 'YES' : 'NO'}}
+{{message.split('').reverse().join('')}}
+
+<div v-bind:id="'list-' + id"></div>
+
+<!--Directives-->
+<p v-if="seen">Now you see me</p>
+
+<!--Arguments-->
+<a v-bind:href="url"></a>
+
+<a v-on:click="doSomething"></a>
+
+<!--Modifiers-->
+<form v-on:submit.prevent="onSubmit"></form>
+<!-- Call event.preventDefault()-->
+
+<!--Filters-->
+
+{{ message | capitalize }}
+
+<div v-bind:id="rawId | formatId"></div>
+
+<!--Shorthands-->
+
+<!-- full syntax -->
+
+<!-- v-bind shorthand -->
+<a v-bind:href="url"></a>
+<!-- shorthand -->
+<a :href="url"></a>
+
+<!-- v-on shorthand -->
+<a v-on:click="doSomething"></a>
+<a @click="doSomething"></a>
+
+</body>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script >
+</script>
+</html>
